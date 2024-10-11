@@ -5,7 +5,7 @@ class Specy {
   private toChooseSkills: Array<Skill>;
   private name: string;
   private language: Array<Language>;
-  private toChooseLanguages: Array<Languages>;
+  private toChooseLanguages: Array<Language>;
   private traits: string;
-  private bonusCaracteristic: number; // TODO Check
+  private bonusCharacteristic: Map<string, number>;
 }
