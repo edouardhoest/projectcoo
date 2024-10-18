@@ -1,5 +1,5 @@
-import ExpressServer from './routes/Server/serverExpress'
-import Server from './routes/server'
+import ExpressServer from './routes/Server/ExpressServer'
+import Server from './routes/Server'
 
 const app: Server = new ExpressServer(8080)
 
