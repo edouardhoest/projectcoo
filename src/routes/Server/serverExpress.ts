@@ -2,7 +2,7 @@ import { Application } from "express";
 import Server from "../server"
 import express from "express"
 import morgan from "morgan";
-import RouteExpress from "../Route/RouteExpress";
+import RouterExpress from "../Router/RouterExpress";
 
 class ExpressServer implements Server {
   private port: Number;
@@ -14,7 +14,7 @@ class ExpressServer implements Server {
 
     this.config();
 
-    new RouteExpress(this.app);
+    new RouterExpress(this.app);
   }
 
   config() {
