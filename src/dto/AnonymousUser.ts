@@ -1,1 +1,1 @@
-class AnonymousUser {}
+export class AnonymousUser {}

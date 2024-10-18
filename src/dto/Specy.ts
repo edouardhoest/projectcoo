@@ -1,4 +1,6 @@
-class Specy {
+import { Language } from "../entity/Language";
+
+export class Specy {
   private id: number;
   private height: number;
   private skills: Array<Skill>;
