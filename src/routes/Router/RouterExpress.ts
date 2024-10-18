@@ -1,4 +1,4 @@
-import characterRoutes from "routes/Routes/Express/character.routes";
+import characterRoutes from "../Routes/Express/character.routes";
 import Router from "../Router";
 import ExpressServer from "routes/Server/ExpressServer";
 
