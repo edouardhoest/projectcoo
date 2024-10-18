@@ -1,8 +1,8 @@
 import { Application } from "express";
-import Route from '../route'
+import Router from "../router";
 import characterRoutes from "./character.routes";
 
-class RouteExpress implements Route<Application> {
+class RouterExpress implements Router<Application> {
   constructor(app: Application) {
     this.init(app)
   }
@@ -12,4 +12,4 @@ class RouteExpress implements Route<Application> {
   }
 }
 
-export default RouteExpress;
+export default RouterExpress;
