@@ -12,10 +12,6 @@ class CharacterRoutes {
   }
 
   public initRoutes() {
-    this.router.get("/:id/extract", (_request: Request, response: Response) => {
-      response.json({ message: "ok" });
-    });
-
     this.router.post("/", (_request: Request, response: Response) => {
       response.json({ message: "ok" });
     });
