@@ -1,7 +1,6 @@
-import express from "express"
+import ExpressServer from './routes/Server/serverExpress'
 import Server from './routes/server'
 
-const app = express();
-new Server(app)
+const app: Server = new ExpressServer(8080)
 
-app.listen(8080, () => console.log("All good !"))
+app.listen(() => console.log("All good !"))
