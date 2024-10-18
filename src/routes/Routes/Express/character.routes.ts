@@ -1,8 +1,9 @@
-import { Request, Response, Router } from "express";
-import CreateCharacterUseCase from "../use_cases/CreateCharacterUseCase";
-import SaveCharacterUseCase from "../use_cases/SaveCharacterUseCase";
+import CreateCharacterUseCase from "../../../use_cases/CreateCharacterUseCase";
+import SaveCharacterUseCase from "../../../use_cases/SaveCharacterUseCase";
+import Routes from "routes/Routes";
 
-class CharacterRoutes {
+class CharacterRoutesExpress implements Routes {
+
   constructor() {
     this.initRoutes();
   }
@@ -27,4 +28,4 @@ class CharacterRoutes {
   }
 }
 
-export default new CharacterRoutes().router;
+export default new CharacterRoutesExpress().router;
