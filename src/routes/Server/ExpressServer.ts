@@ -1,5 +1,5 @@
 import { Application } from "express";
-import Server from "../server"
+import Server from "../Server"
 import express from "express"
 import morgan from "morgan";
 import RouterExpress from "../Router/RouterExpress";
