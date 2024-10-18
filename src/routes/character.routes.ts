@@ -1,4 +1,6 @@
 import { Request, Response, Router } from "express";
+import CreateCharacterUseCase from "../use_cases/CreateCharacterUseCase";
+import SaveCharacterUseCase from "../use_cases/SaveCharacterUseCase";
 
 class CharacterRoutes {
   constructor() {
@@ -12,12 +14,15 @@ class CharacterRoutes {
   }
 
   public initRoutes() {
-    this.router.post("/", (_request: Request, response: Response) => {
-      response.json({ message: "ok" });
+    this.router.post("/", (_request: Request, _response: Response) => {
+      const createCharacterUseCase = new CreateCharacterUseCase();
+      const character = createCharacterUseCase.execute(_request.body);
+      _response.json(character);
     });
 
-    this.router.post("/save", (_request: Request, response: Response) => {
-      response.json({ message: "ok" });
+    this.router.post("/save", (_request: Request) => {
+      const saveCharacterUseCase = new SaveCharacterUseCase();
+      saveCharacterUseCase.execute(_request.body);
     });
   }
 }

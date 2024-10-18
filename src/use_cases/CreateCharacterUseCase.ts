@@ -1,8 +1,8 @@
 import { UseCase } from "./UseCase";
 import { Character } from "../entity/Character";
 
-class CreateCharacterUseCase implements UseCase<Character> {
-  execute(): Character {
-    return new Character();
+export default class CreateCharacterUseCase implements UseCase<Character, string> {
+  execute(requestBody: string): Character {
+    return new Character(requestBody);
   }
 }

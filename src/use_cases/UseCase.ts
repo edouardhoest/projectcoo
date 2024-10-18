@@ -1,3 +1,3 @@
-export interface UseCase<T> {
-  execute(): T;
+export interface UseCase<T, K> {
+  execute(requestBody: K): T;
 }

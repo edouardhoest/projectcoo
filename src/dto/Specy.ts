@@ -10,4 +10,8 @@ export class Specy {
   private toChooseLanguages: Array<Language>;
   private traits: string;
   private bonusCharacteristic: Map<string, number>;
+
+  constructor(init?: Partial<Specy>) {
+    Object.assign(this, init);
+  }
 }
