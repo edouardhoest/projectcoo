@@ -6,23 +6,27 @@ import RouterExpress from "../Router/RouterExpress";
 
 class ExpressServer implements Server {
   private port: Number;
-  private app: Application;
+  private _app: Application;
 
   constructor(port: Number) {
     this.port = port;
-    this.app = express()
+    this._app = express()
 
     this.config();
 
-    new RouterExpress(this.app);
+    new RouterExpress(this);
   }
 
   config() {
-    this.app.use(morgan("tiny"));
+    this._app.use(morgan("tiny"));
   }
 
   public listen(callback?: () => void) {
-    this.app.listen(this.port, callback);
+    this._app.listen(this.port, callback);
+  }
+
+  public get app() : Application {
+    return this._app;
   }
 }
 
