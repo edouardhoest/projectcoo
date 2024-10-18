@@ -1,1 +1,0 @@
-class DungeonMaster extends User {}
