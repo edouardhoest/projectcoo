@@ -1,0 +1,10 @@
+{
+    "character":[
+        {
+            "name":"Bob Lenon",
+            "idUser":0,
+            "picture":"Bob.png",
+            "idCharacter":1
+        }
+    ]
+}
