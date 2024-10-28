@@ -5,7 +5,7 @@ import { Character } from "../entity/Character";
 
 let db = new JsonDB(new Config("database", true, false, "/"));
 
-function addCharacter(name: string, idUser: number, picture: string, idCharacter: number, alignment: Alignment): void {
+export function addCharacter(name: string, idUser: number, picture: string, idCharacter: number, alignment: Alignment): void {
   const character = {
     name: name,
     idUser: idUser,
@@ -25,7 +25,7 @@ function addCharacter(name: string, idUser: number, picture: string, idCharacter
   }
 }
 
-function getCharacter(idCharacter: number): Character {
+export function getCharacter(idCharacter: number): Character {
   try {
     const character = db.getData(`/character/${idCharacter}`);
     console.log(200);
