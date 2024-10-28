@@ -5,7 +5,7 @@ import { Character } from "../entity/Character";
 
 let db = new JsonDB(new Config("database", true, false, "/"));
 
-async function addCharacter(name: string, idUser: number, picture: string, idCharacter: number, alignment: Alignment) : Promise<void> {
+function addCharacter(name: string, idUser: number, picture: string, idCharacter: number, alignment: Alignment): void {
   const character = {
     name: name,
     idUser: idUser,
@@ -17,7 +17,7 @@ async function addCharacter(name: string, idUser: number, picture: string, idCha
     },
   };
   try {
-    await db.push("/character", character);
+    db.push(`/character/${idCharacter}`, character);
     console.log(200);
   } catch (error) {
     console.log(error);
@@ -25,11 +25,11 @@ async function addCharacter(name: string, idUser: number, picture: string, idCha
   }
 }
 
-async function getCharacter(idCharacter: number) : Promise<Character> {
+function getCharacter(idCharacter: number): Character {
   try {
-    const character = await db.getData("/character/idCharacter/"+idCharacter);
+    const character = db.getData(`/character/${idCharacter}`);
     console.log(200);
-    return character;
+    return character as Character;
   } catch (error) {
     console.log(error);
     throw error;
