@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "express": "^4.21.1",
-    "morgan": "^1.10.0"
+    "lowdb": "^7.0.1",
+    "morgan": "^1.10.0",
+    "node-json-db": "^2.3.0"
   }
 }

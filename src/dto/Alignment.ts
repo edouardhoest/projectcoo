@@ -8,4 +8,12 @@ export class Alignment {
   constructor(init?: Partial<Alignment>) {
     Object.assign(this, init);
   }
+
+  public getMoral() : Moral{
+    return this.moral;
+  }
+
+  public getOrder() : Order {
+    return this.order;
+  }
 }
