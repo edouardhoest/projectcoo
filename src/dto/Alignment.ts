@@ -9,11 +9,11 @@ export class Alignment {
     Object.assign(this, init);
   }
 
-  public getMoral() : Moral{
+  public getMoral(): Moral {
     return this.moral;
   }
 
-  public getOrder() : Order {
+  public getOrder(): Order {
     return this.order;
   }
 }
