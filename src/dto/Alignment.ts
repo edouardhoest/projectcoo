@@ -5,8 +5,12 @@ export class Alignment {
   private moral: Moral;
   private order: Order;
 
-  constructor(init?: Partial<Alignment>) {
-    Object.assign(this, init);
+  constructor(moral?: Moral, order?: Order, init?: Partial<Alignment>) {
+    this.moral = moral || Moral.NEUTRAL;
+    this.order = order || Order.NEUTRAL;
+    if (init) {
+      Object.assign(this, init);
+    }
   }
 
   public getMoral(): Moral {

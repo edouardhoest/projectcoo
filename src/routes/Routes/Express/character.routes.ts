@@ -15,14 +15,14 @@ class CharacterRoutesExpress implements Routes {
   }
 
   public initRoutes() {
-    this.router.post("/", async (_request: Request, _response: Response) => {
+    this.router.get("/character-creation-information", async (_request: Request, _response: Response) => {
       const createCharacterUseCase = new CreateCharacterUseCase();
       try {
-        const character = await createCharacterUseCase.execute(_request.body);
+        const character = createCharacterUseCase.execute();
         _response.json(character);
       } catch (error) {
         _response.status(500).json({
-          error: "Error creating character",
+          error: "Error retrieving character creation information",
           details: error instanceof Error ? error.message : String(error),
         });
       }

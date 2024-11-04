@@ -1,12 +1,12 @@
 import { UseCase } from "./UseCase";
 import { Character } from "../entity/Character";
-import { CharacterRepositoryImpl } from "../database/CharacterRepositoryImpl";
+import { CharacterRepositoryImpl } from "../repositories/CharacterRepositoryImpl";
 
 export default class SaveCharacterUseCase implements UseCase<void, string> {
   execute(requestBody: string): void {
     const character = new Character(requestBody);
-    const database: CharacterRepositoryImpl = new CharacterRepositoryImpl();
-    database.save(character);
+    const characterRepository: CharacterRepositoryImpl = new CharacterRepositoryImpl();
+    characterRepository.save(character);
     return;
   }
 }

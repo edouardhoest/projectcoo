@@ -1,8 +1,18 @@
 export class Language {
-  private id: number;
-  private name: string;
+  constructor(id: number, name: string) {
+    this._id = id;
+    this._name = name;
+  }
 
-  constructor(init?: Partial<Language>) {
-    Object.assign(this, init);
+  private _id: number;
+
+  get id(): number {
+    return this._id;
+  }
+
+  private _name: string;
+
+  get name(): string {
+    return this._name;
   }
 }
