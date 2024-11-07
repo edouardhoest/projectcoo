@@ -4,7 +4,7 @@ import ExpressServer from "routes/Server/ExpressServer";
 
 class RouterExpress implements Router<ExpressServer> {
   constructor(server: ExpressServer) {
-    this.init(server)
+    this.init(server);
   }
 
   init(server: ExpressServer): void {

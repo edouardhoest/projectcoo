@@ -1,32 +1,32 @@
-import { Application } from "express";
-import Server from "../Server"
-import express from "express"
+import express, { Application } from "express";
+import Server from "../Server";
 import morgan from "morgan";
 import RouterExpress from "../Router/RouterExpress";
 
 class ExpressServer implements Server {
-  private port: Number;
+  private port: number;
   private _app: Application;
 
-  constructor(port: Number) {
+  constructor(port: number) {
     this.port = port;
-    this._app = express()
+    this._app = express();
 
     this.config();
 
     new RouterExpress(this);
   }
 
-  config() {
-    this._app.use(morgan("tiny"));
+  public get app(): Application {
+    return this._app;
   }
 
   public listen(callback?: () => void) {
     this._app.listen(this.port, callback);
   }
 
-  public get app() : Application {
-    return this._app;
+  config() {
+    this._app.use(morgan("tiny"));
+    this._app.use(express.json());
   }
 }
 

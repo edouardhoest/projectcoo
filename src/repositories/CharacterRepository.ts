@@ -1,9 +1,7 @@
+import { Character } from "../entity/Character";
+
 export interface CharacterRepository {
-  getCharacterById(id: string): Character;
+  findById(idCharacter: string): Promise<Character>;
 
-  saveCharacter(): void;
-
-  deleteCharacter(): void;
-
-  updateCharacter(): void;
+  save(character: Character): void;
 }

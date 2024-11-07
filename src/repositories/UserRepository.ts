@@ -1,3 +1,5 @@
+import { User } from "../entity/User";
+
 export interface UserRepository {
   getUserById(id: string): User;
 
