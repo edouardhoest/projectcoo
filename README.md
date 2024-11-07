@@ -71,7 +71,17 @@ Pour obtenir les informations de création d'un personnage, il faut utiliser la 
   ]
 }
 ```
-Afin de créer votre personnage, il faut modifier le **\_name** ainsi que **\_picture** mais également supprimer les lignes non souhaité dans **\_specy** et **\_jobs**, jusqu'à ce qu'il reste une ligne dans chaque partie.
+Afin de créer votre personnage, il faut modifier le **\_name** ainsi que **\_picture** mais également supprimer les lignes non souhaité dans **\_specy** et **\_jobs**, jusqu'à ce qu'il reste une ligne dans chaque partie, comme montrez ci-dessous
+
+```json
+{
+  "_name": "Dovahkiin",
+  "_picture": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
+  "_alignment": "Chaotic Good",
+  "_jobs": "Barbarian",
+  "_specy": "Dragonborn"
+}
+```
 
 Une fois que vous avez créer votre personnage au travers du JSON, vous l'envoyer en **POST** sur la route **/character/save**.
 
