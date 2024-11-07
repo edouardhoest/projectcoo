@@ -9,6 +9,7 @@ export class Character {
   private _name: string;
   private _idCharacter: number;
   private _alignment: Alignment;
+  private _job: Job;
 
   constructor(
     name?: string,
@@ -32,8 +33,6 @@ export class Character {
       Object.assign(this, init);
     }
   }
-
-  private _job: Job;
 
   get name(): string {
     return this._name;

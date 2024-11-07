@@ -1,13 +1,1 @@
-{
-    "character":
-        {
-            "name":"Bob Lenon",
-            "idUser": 1,
-            "picture":"Bob.png",
-            "idCharacter":1,
-            "Alignment": {
-                "moral": "GOOD",
-                "order": "NEUTRAL"
-            }
-        }
-}
+{}
