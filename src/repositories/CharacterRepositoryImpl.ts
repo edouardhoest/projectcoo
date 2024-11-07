@@ -6,15 +6,19 @@ export class CharacterRepositoryImpl implements CharacterRepository {
   private db = new JsonDB(new Config("database", true, false, "/"));
 
   save(character: Character): void {
-    const idCharacter = 1; // should be auto increment when added to database
-    const characterData = JSON.parse(
-      JSON.stringify(character, (_key, value) => {
-        if (value instanceof Map) {
-          return Array.from(value.entries());
-        }
-        return value;
-      }),
-    );
+    const idCharacter = 1;
+    const characterData = {
+      name: character.name,
+      idUser: character.idUser || 1,
+      picture: character.picture,
+      idCharacter: idCharacter,
+      alignment: {
+        moral: character.alignment.getMoral(),
+        order: character.alignment.getOrder()
+      },
+      job: character.jobs.name,
+      specy: character.specy.name,
+    };
     this.db.push(`/character/${idCharacter}`, characterData);
   }
 
