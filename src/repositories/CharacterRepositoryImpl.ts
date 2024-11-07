@@ -3,23 +3,15 @@ import { Character } from "../entity/Character";
 import { CharacterRepository } from "./CharacterRepository";
 
 export class CharacterRepositoryImpl implements CharacterRepository {
-  private db = new JsonDB(new Config("database", true, false, "/"));
+  private db = new JsonDB(new Config("src/database/database", true, true, "/"));
 
   save(character: Character): void {
-    const idCharacter = 1;
-    const characterData = {
-      name: character.name,
-      idUser: character.idUser || 1,
-      picture: character.picture,
-      idCharacter: idCharacter,
-      alignment: {
-        moral: character.alignment.getMoral(),
-        order: character.alignment.getOrder()
-      },
-      job: character.jobs.name,
-      specy: character.specy.name,
-    };
-    this.db.push(`/character/${idCharacter}`, characterData);
+    try{
+      this.db.push(`/character/`, character);
+    }
+    catch(error){
+      console.log(error);
+    }
   }
 
   async findById(idCharacter: string): Promise<Character> {
