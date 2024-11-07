@@ -35,8 +35,8 @@ export default class CreateCharacterUseCase implements UseCase<object, string> {
     jobs: string[],
     races: string[],
   ) {
-    characterKeys["_alignment"] = alignments; //TODO
-    characterKeys["_jobs"] = jobs; //TODO
+    characterKeys["_alignment"] = alignments;
+    characterKeys["_jobs"] = jobs;
     characterKeys["_specy"] = races;
   }
 
