@@ -1,27 +1,39 @@
 import { Language } from "../entity/Language";
 import { Skill } from "./Skill";
+import { Trait } from "./Trait";
+import { SubSpecy } from "./SubSpecy";
 
 export class Specy {
+  private readonly _id: string;
+  private readonly _name: string;
+  private readonly _skills: Array<Skill>;
+  private _language: Array<Language>;
+  private readonly _toChooseSkills: Array<Skill>;
+  private readonly _toChooseLanguages: Array<Language>;
+  private _bonusCharacteristic: Map<string, number>;
+
   constructor(
-    id?: number,
-    height?: number,
+    id?: string,
+    subSpecy?: SubSpecy,
+    height?: string,
     skills?: Array<Skill>,
     toChooseSkills?: Array<Skill>,
     name?: string,
     language?: Array<Language>,
     toChooseLanguages?: Array<Language>,
-    traits?: string,
+    traits?: Array<Trait>,
     bonusCharacteristic?: Map<string, number>,
     init?: Partial<Specy>,
   ) {
-    this._id = id || 0;
-    this._height = height || 0;
-    this._skills = skills || [];
-    this._toChooseSkills = toChooseSkills || [];
+    this._id = id || "";
     this._name = name || "";
+    this._height = height || "";
+    this._traits = traits || [];
+    this._skills = skills || [];
     this._language = language || [];
+    this._subSpecy = subSpecy || new SubSpecy();
+    this._toChooseSkills = toChooseSkills || [];
     this._toChooseLanguages = toChooseLanguages || [];
-    this._traits = traits || "";
     this._bonusCharacteristic = bonusCharacteristic || new Map();
 
     if (init) {
@@ -29,57 +41,84 @@ export class Specy {
     }
   }
 
-  private _id: number;
+  private _height: string;
 
-  get id(): number {
-    return this._id;
-  }
-
-  private _height: number;
-
-  get height(): number {
+  get height(): string {
     return this._height;
   }
 
-  private _skills: Array<Skill>;
+  set height(height: string) {
+    this._height = height;
+  }
+
+  private _subSpecy: SubSpecy;
+
+  get subSpecy(): SubSpecy {
+    return this._subSpecy;
+  }
+
+  set subSpecy(subSpecy: SubSpecy) {
+    this._subSpecy = subSpecy;
+  }
 
   get skills(): Array<Skill> {
     return this._skills;
   }
 
-  private _toChooseSkills: Array<Skill>;
+  private _traits: Array<Trait>;
+
+  get traits(): Array<Trait> {
+    return this._traits;
+  }
 
   get toChooseSkills(): Array<Skill> {
     return this._toChooseSkills;
   }
 
-  private _name: string;
-
   get name(): string {
     return this._name;
   }
-
-  private _language: Array<Language>;
 
   get language(): Array<Language> {
     return this._language;
   }
 
-  private _toChooseLanguages: Array<Language>;
+  set traits(traits: Trait[]) {
+    this._traits = traits;
+  }
 
   get toChooseLanguages(): Array<Language> {
     return this._toChooseLanguages;
   }
 
-  private _traits: string;
-
-  get traits(): string {
-    return this._traits;
+  get id(): string {
+    return this._id;
   }
 
-  private _bonusCharacteristic: Map<string, number>;
+  set language(languages: Array<Language>) {
+    this._language = languages;
+  }
 
   get bonusCharacteristic(): Map<string, number> {
     return this._bonusCharacteristic;
+  }
+
+  set bonusCharacteristic(bonuses: Map<string, number>) {
+    this._bonusCharacteristic = bonuses;
+  }
+
+  static fromJson(json: any): Specy {
+    return new Specy(
+      json.index,
+      undefined,
+      json.size,
+      undefined,
+      undefined,
+      json.name,
+      json.languages,
+      undefined,
+      undefined,
+      undefined,
+    );
   }
 }

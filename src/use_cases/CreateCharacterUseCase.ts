@@ -1,15 +1,14 @@
 import { UseCase } from "./UseCase";
 import { Character } from "../entity/Character";
-import { CharacterRepositoryImpl } from "../repositories/CharacterRepositoryImpl";
-import * as console from "node:console";
+import { CharacterService } from "../services/CharacterService";
 
 export default class CreateCharacterUseCase implements UseCase<object, string> {
   async execute(): Promise<object> {
     const character = new Character();
-    const characterRepository: CharacterRepositoryImpl = new CharacterRepositoryImpl();
-    const species = await characterRepository.retrieveRacesInformation();
-    const jobs = await characterRepository.retrieveClassInformation();
-    const alignments = await characterRepository.retrieveAlignmentsInformation();
+    const characterService: CharacterService = new CharacterService();
+    const species = await characterService.retrieveRacesInformation();
+    const jobs = await characterService.retrieveClassInformation();
+    const alignments = await characterService.retrieveAlignmentsInformation();
 
     const characterKeys = Object.keys(character).reduce(
       (acc, key) => {
@@ -21,9 +20,9 @@ export default class CreateCharacterUseCase implements UseCase<object, string> {
 
     this.deleteUselessKeys(characterKeys);
     characterKeys["_name"] = "YOUR NAME";
+    characterKeys["_picture"] = "YOUR PICTURE URL";
 
     this.modifyCharacterKeysValues(characterKeys, alignments, jobs, species);
-    console.log(characterKeys);
     return characterKeys;
   }
 
@@ -33,15 +32,15 @@ export default class CreateCharacterUseCase implements UseCase<object, string> {
     },
     alignments: string[],
     jobs: string[],
-    races: string[],
+    species: string[],
   ) {
     characterKeys["_alignment"] = alignments;
-    characterKeys["_jobs"] = jobs;
-    characterKeys["_specy"] = races;
+    characterKeys["_job"] = jobs;
+    characterKeys["_specy"] = species;
   }
 
   deleteUselessKeys(characterKeys: { [x: string]: any }) {
-    const toDeleteKeys = ["_idUser", "_picture", "_idCharacter"];
+    const toDeleteKeys = ["_idUser", "_idCharacter"];
     toDeleteKeys.forEach((key) => {
       delete characterKeys[key];
     });

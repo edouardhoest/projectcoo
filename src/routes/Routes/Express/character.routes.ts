@@ -31,8 +31,8 @@ class CharacterRoutesExpress implements Routes {
     this.router.post("/save", async (_request: Request, _response: Response) => {
       const saveCharacterUseCase = new SaveCharacterUseCase();
       try {
-        saveCharacterUseCase.execute(_request.body);
-        _response.status(200).json({ message: "Character saved successfully" });
+        const character = await saveCharacterUseCase.execute(_request.body);
+        _response.status(200).json(character);
       } catch (error) {
         _response.status(500).json({
           error: "Error creating character",

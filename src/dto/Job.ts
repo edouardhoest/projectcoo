@@ -1,19 +1,11 @@
 import { Skill } from "./Skill";
 
 export class Job {
-  constructor(
-    id?: number,
-    name?: string,
-    skills?: Array<Skill>,
-    description?: string,
-    toChooseSkills?: Array<Skill>,
-    init?: Partial<Job>,
-  ) {
+  constructor(id?: number, name?: string, skills?: Array<Skill>, toChooseSkills?: Array<Skill[]>, init?: Partial<Job>) {
     this._id = id || 0;
     this._name = name || "";
     this._skills = skills || [];
-    this._description = description || "";
-    this._toChooseSkills = toChooseSkills || [];
+    this._toChooseSkills = toChooseSkills || [[]];
 
     if (init) {
       Object.assign(this, init);
@@ -38,15 +30,18 @@ export class Job {
     return this._skills;
   }
 
-  private _description: string;
+  private _toChooseSkills: Array<Skill[]>;
 
-  get description(): string {
-    return this._description;
+  get toChooseSkills(): Array<Skill[]> {
+    return this._toChooseSkills;
   }
 
-  private _toChooseSkills: Array<Skill>;
-
-  get toChooseSkills(): Array<Skill> {
-    return this._toChooseSkills;
+  static fromJson(json: any): Job {
+    return new Job(
+      json.id,
+      json.name,
+      Skill.fromJson(json.proficiencies),
+      Skill.toChoosefromJson(json.proficiency_choices),
+    );
   }
 }
