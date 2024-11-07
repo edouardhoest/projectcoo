@@ -31,55 +31,76 @@ De cette façon, l'API écoutera sur le port 80.
 Pour obtenir les informations de création d'un personnage, il faut utiliser la route **/character/character-creation-information** qui vous retournera le JSON suivant
 ```json
 {
-  "_name": "YOUR NAME",
-  "_picture": "YOUR PICTURE URL",
-  "_alignment": [
-    "Chaotic Evil",
-    "Chaotic Good",
-    "Chaotic Neutral",
-    "Lawful Evil",
-    "Lawful Good",
-    "Lawful Neutral",
-    "Neutral",
-    "Neutral Evil",
-    "Neutral Good"
-  ],
-  "_jobs": [
-    "Barbarian",
-    "Bard",
-    "Cleric",
-    "Druid",
-    "Fighter",
-    "Monk",
-    "Paladin",
-    "Ranger",
-    "Rogue",
-    "Sorcerer",
-    "Warlock",
-    "Wizard"
-  ],
-  "_specy": [
-    "Dragonborn",
-    "Dwarf",
-    "Elf",
-    "Gnome",
-    "Half-Elf",
-    "Half-Orc",
-    "Halfling",
-    "Human",
-    "Tiefling"
-  ]
+    "_job": [
+        "Barbarian",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+    ],
+    "_specy": [
+        "Dragonborn",
+        "Dwarf - hill-dwarf",
+        "Elf - high-elf",
+        "Gnome - rock-gnome",
+        "Half-Elf",
+        "Half-Orc",
+        "Halfling - lightfoot-halfling",
+        "Human",
+        "Tiefling"
+    ],
+    "_name": "YOUR NAME",
+    "_picture": "YOUR PICTURE URL",
+    "_alignment": [
+        "Chaotic Evil",
+        "Chaotic Good",
+        "Chaotic Neutral",
+        "Lawful Evil",
+        "Lawful Good",
+        "Lawful Neutral",
+        "Neutral",
+        "Neutral Evil",
+        "Neutral Good"
+    ]
 }
 ```
 Afin de créer votre personnage, il faut modifier le **\_name** ainsi que **\_picture** mais également supprimer les lignes non souhaité dans **\_specy** et **\_jobs**, jusqu'à ce qu'il reste une ligne dans chaque partie, comme montrez ci-dessous
 
 ```json
 {
-  "_name": "Dovahkiin",
-  "_picture": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
-  "_alignment": "Chaotic Good",
-  "_jobs": "Barbarian",
-  "_specy": "Dragonborn"
+    "_job": "barbarian",
+    "_specy": "dragonborn",
+    "_name": "Dovahkiin",
+    "_picture": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
+    "_alignment": "Chaotic Good"
+}
+```
+
+Vous pouvez également choisir si vous souhaitez que votre personnage possède on non une sous classe, comme montré ci-dessous:
+```json
+{
+    "_job": "barbarian",
+    "_specy": "Elf - high-elf",
+    "_name": "Dovahkiin",
+    "_picture": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
+    "_alignment": "Chaotic Good"
+}
+```
+
+```json
+{
+    "_job": "barbarian",
+    "_specy": "Elf",
+    "_name": "Dovahkiin",
+    "_picture": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
+    "_alignment": "Chaotic Good"
 }
 ```
 
