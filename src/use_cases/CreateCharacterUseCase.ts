@@ -1,31 +1,49 @@
 import { UseCase } from "./UseCase";
-//import { Character } from "../entity/Character";
+import { Character } from "../entity/Character";
 import { CharacterRepositoryImpl } from "../repositories/CharacterRepositoryImpl";
 import * as console from "node:console";
 
 export default class CreateCharacterUseCase implements UseCase<object, string> {
-  execute(): object {
-    //const character = new Character();
+  async execute(): Promise<object> {
+    const character = new Character();
     const characterRepository: CharacterRepositoryImpl = new CharacterRepositoryImpl();
-    const test = characterRepository.retrieveClassInformation();
-    console.log(test);
-    return test;
-    //return this.getJsonRecursively(character);
+    const species = await characterRepository.retrieveRacesInformation();
+    const jobs = await characterRepository.retrieveClassInformation();
+    const alignments = await characterRepository.retrieveAlignmentsInformation();
+
+    const characterKeys = Object.keys(character).reduce(
+      (acc, key) => {
+        acc[key] = key;
+        return acc;
+      },
+      {} as { [key: string]: any },
+    );
+
+    this.deleteUselessKeys(characterKeys);
+    characterKeys["_name"] = "YOUR NAME";
+
+    this.modifyCharacterKeysValues(characterKeys, alignments, jobs, species);
+    console.log(characterKeys);
+    return characterKeys;
   }
 
-  /*private getJsonRecursively(obj: any): object {
-    const result: { [key: string]: any } = {};
+  modifyCharacterKeysValues(
+    characterKeys: {
+      [x: string]: any;
+    },
+    alignments: string[],
+    jobs: string[],
+    races: string[],
+  ) {
+    characterKeys["_alignment"] = alignments; //TODO
+    characterKeys["_jobs"] = jobs; //TODO
+    characterKeys["_specy"] = races;
+  }
 
-    for (const key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        if (typeof obj[key] === "object" && obj[key] !== null) {
-          result[key] = this.getJsonRecursively(obj[key]);
-        } else {
-          result[key] = obj[key];
-        }
-      }
-    }
-
-    return result;
-  }*/
+  deleteUselessKeys(characterKeys: { [x: string]: any }) {
+    const toDeleteKeys = ["_idUser", "_picture", "_idCharacter"];
+    toDeleteKeys.forEach((key) => {
+      delete characterKeys[key];
+    });
+  }
 }

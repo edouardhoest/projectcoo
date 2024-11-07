@@ -18,7 +18,7 @@ class CharacterRoutesExpress implements Routes {
     this.router.get("/character-creation-information", async (_request: Request, _response: Response) => {
       const createCharacterUseCase = new CreateCharacterUseCase();
       try {
-        const character = createCharacterUseCase.execute();
+        const character = await createCharacterUseCase.execute();
         _response.json(character);
       } catch (error) {
         _response.status(500).json({

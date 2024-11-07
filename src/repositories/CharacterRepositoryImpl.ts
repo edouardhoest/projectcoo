@@ -1,6 +1,7 @@
 import { Config, JsonDB } from "node-json-db";
 import { Character } from "../entity/Character";
 import { CharacterRepository } from "./CharacterRepository";
+import { ExternalApiRace } from "../dto/ExternalApiRace";
 
 export class CharacterRepositoryImpl implements CharacterRepository {
   private db = new JsonDB(new Config("database", true, false, "/"));
@@ -15,13 +16,18 @@ export class CharacterRepositoryImpl implements CharacterRepository {
     return await character;
   }
 
-  async retrieveClassInformation() {
-    const res = await fetch('https://www.dnd5eapi.co/api/races');
-    const headerDate = res.headers && res.headers.get('date') ? res.headers.get('date') : 'no response date';
-    console.log('Status Code:', res.status);
-    console.log('Date in Response header:', headerDate);
+  async retrieveRacesInformation(): Promise<string[]> {
+    const res = await fetch("https://www.dnd5eapi.co/api/races");
+    return ExternalApiRace.fromJson(await res.json()).resultsNames();
+  }
 
-    const species = await res.json();
-    console.log(species)
+  async retrieveClassInformation(): Promise<string[]> {
+    const res = await fetch("https://www.dnd5eapi.co/api/classes");
+    return ExternalApiRace.fromJson(await res.json()).resultsNames();
+  }
+
+  async retrieveAlignmentsInformation(): Promise<string[]> {
+    const res = await fetch("https://www.dnd5eapi.co/api/alignments");
+    return ExternalApiRace.fromJson(await res.json()).resultsNames();
   }
 }
