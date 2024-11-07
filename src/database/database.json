@@ -2,7 +2,7 @@
     "character":
         {
             "name":"Bob Lenon",
-            "idUser":0,
+            "idUser": 1,
             "picture":"Bob.png",
             "idCharacter":1,
             "Alignment": {
