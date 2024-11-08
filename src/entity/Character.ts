@@ -1,15 +1,14 @@
-import { Alignment } from "../dto/Alignment";
-import { Specy } from "../dto/Specy";
 import { Job } from "../dto/Job";
+import { Species } from "../dto/Species";
+import { Alignment } from "../dto/Alignment";
 
 export class Character {
-  private _specy: Specy;
-  private _idUser: number;
-  private _picture: string;
-  private _name: string;
-  private _idCharacter: number;
-  private _alignment: Alignment;
   private _job: Job;
+  private _picture: string;
+  private readonly _name: string;
+  private _alignment: Alignment;
+  private readonly _idUser: number;
+  private readonly _idCharacter: number;
 
   constructor(
     name?: string,
@@ -18,21 +17,23 @@ export class Character {
     idCharacter?: number,
     alignment?: Alignment,
     jobs?: Job,
-    specy?: Specy,
+    species?: Species,
     init?: Partial<Character>,
   ) {
     this._name = name || "";
     this._idUser = idUser || 0;
     this._picture = picture || "";
-    this._idCharacter = idCharacter || 0;
-    this._alignment = alignment || new Alignment();
     this._job = jobs || new Job();
-    this._specy = specy || new Specy();
+    this._idCharacter = idCharacter || 0;
+    this._species = species || new Species();
+    this._alignment = alignment || new Alignment();
 
     if (init) {
       Object.assign(this, init);
     }
   }
+
+  private _species: Species;
 
   get name(): string {
     return this._name;
@@ -42,8 +43,8 @@ export class Character {
     this._job = job;
   }
 
-  set specy(specy: Specy) {
-    this._specy = specy;
+  get species(): Species {
+    return this._species;
   }
 
   set picture(picture: string) {
@@ -74,7 +75,7 @@ export class Character {
     return this._job;
   }
 
-  get specy(): Specy {
-    return this._specy;
+  set species(species: Species) {
+    this._species = species;
   }
 }

@@ -1,20 +1,22 @@
-import { Language } from "../entity/Language";
 import { Skill } from "./Skill";
 import { Trait } from "./Trait";
-import { SubSpecy } from "./SubSpecy";
+import { SubSpecies } from "./SubSpecies";
+import { Language } from "../entity/Language";
 
-export class Specy {
+export class Species {
+  private _height: string;
   private readonly _id: string;
+  private _traits: Array<Trait>;
   private readonly _name: string;
-  private readonly _skills: Array<Skill>;
   private _language: Array<Language>;
-  private readonly _toChooseSkills: Array<Skill>;
   private readonly _toChooseLanguages: Array<Language>;
+  private readonly _skills: Array<Skill>;
+  private readonly _toChooseSkills: Array<Skill>;
   private _bonusCharacteristic: Map<string, number>;
 
   constructor(
     id?: string,
-    subSpecy?: SubSpecy,
+    subSpecies?: SubSpecies,
     height?: string,
     skills?: Array<Skill>,
     toChooseSkills?: Array<Skill>,
@@ -23,7 +25,7 @@ export class Specy {
     toChooseLanguages?: Array<Language>,
     traits?: Array<Trait>,
     bonusCharacteristic?: Map<string, number>,
-    init?: Partial<Specy>,
+    init?: Partial<Species>,
   ) {
     this._id = id || "";
     this._name = name || "";
@@ -31,9 +33,9 @@ export class Specy {
     this._traits = traits || [];
     this._skills = skills || [];
     this._language = language || [];
-    this._subSpecy = subSpecy || new SubSpecy();
     this._toChooseSkills = toChooseSkills || [];
     this._toChooseLanguages = toChooseLanguages || [];
+    this._subSpecies = subSpecies || new SubSpecies();
     this._bonusCharacteristic = bonusCharacteristic || new Map();
 
     if (init) {
@@ -41,7 +43,7 @@ export class Specy {
     }
   }
 
-  private _height: string;
+  private _subSpecies: SubSpecies;
 
   get height(): string {
     return this._height;
@@ -51,21 +53,17 @@ export class Specy {
     this._height = height;
   }
 
-  private _subSpecy: SubSpecy;
-
-  get subSpecy(): SubSpecy {
-    return this._subSpecy;
+  get subSpecies(): SubSpecies {
+    return this._subSpecies;
   }
 
-  set subSpecy(subSpecy: SubSpecy) {
-    this._subSpecy = subSpecy;
+  set subSpecies(subSpecies: SubSpecies) {
+    this._subSpecies = subSpecies;
   }
 
   get skills(): Array<Skill> {
     return this._skills;
   }
-
-  private _traits: Array<Trait>;
 
   get traits(): Array<Trait> {
     return this._traits;
@@ -107,8 +105,8 @@ export class Specy {
     this._bonusCharacteristic = bonuses;
   }
 
-  static fromJson(json: any): Specy {
-    return new Specy(
+  static fromJson(json: any): Species {
+    return new Species(
       json.index,
       undefined,
       json.size,

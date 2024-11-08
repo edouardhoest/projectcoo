@@ -1,5 +1,5 @@
-import ExpressServer from "./routes/Server/ExpressServer";
 import Server from "./routes/Server";
+import ExpressServer from "./routes/Server/ExpressServer";
 
 const app: Server = new ExpressServer(parseInt(process.env.SERVER_PORT ?? "") ?? 8080);
 
