@@ -1,11 +1,11 @@
-import express, { Application } from "express";
-import Server from "../Server";
 import morgan from "morgan";
+import Server from "../Server";
+import express, { Application } from "express";
 import RouterExpress from "../Router/RouterExpress";
 
 class ExpressServer implements Server {
-  private port: number;
-  private _app: Application;
+  private readonly port: number;
+  private readonly _app: Application;
 
   constructor(port: number) {
     this.port = port;

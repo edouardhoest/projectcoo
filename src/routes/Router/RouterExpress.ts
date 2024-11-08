@@ -1,6 +1,6 @@
-import characterRoutes from "../Routes/Express/character.routes";
 import Router from "../Router";
 import ExpressServer from "routes/Server/ExpressServer";
+import characterRoutes from "../Routes/Express/character.routes";
 
 class RouterExpress implements Router<ExpressServer> {
   constructor(server: ExpressServer) {

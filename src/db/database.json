@@ -1,0 +1,135 @@
+{
+  "character": {
+    "_job": {
+      "_id": 0,
+      "_name": "Barbarian",
+      "_skills": [
+        {
+          "_id": "light-armor",
+          "_name": "Light Armor"
+        },
+        {
+          "_id": "medium-armor",
+          "_name": "Medium Armor"
+        },
+        {
+          "_id": "shields",
+          "_name": "Shields"
+        },
+        {
+          "_id": "simple-weapons",
+          "_name": "Simple Weapons"
+        },
+        {
+          "_id": "martial-weapons",
+          "_name": "Martial Weapons"
+        },
+        {
+          "_id": "saving-throw-str",
+          "_name": "Saving Throw: STR"
+        },
+        {
+          "_id": "saving-throw-con",
+          "_name": "Saving Throw: CON"
+        }
+      ],
+      "_toChooseSkills": [
+        [
+          {
+            "_id": "skill-animal-handling",
+            "_name": "Skill: Animal Handling"
+          },
+          {
+            "_id": "skill-athletics",
+            "_name": "Skill: Athletics"
+          },
+          {
+            "_id": "skill-intimidation",
+            "_name": "Skill: Intimidation"
+          },
+          {
+            "_id": "skill-nature",
+            "_name": "Skill: Nature"
+          },
+          {
+            "_id": "skill-perception",
+            "_name": "Skill: Perception"
+          },
+          {
+            "_id": "skill-survival",
+            "_name": "Skill: Survival"
+          }
+        ]
+      ]
+    },
+    "_name": "Dovahkiin",
+    "_idUser": "https://vignette3.wikia.nocookie.net/p__/images/c/ca/Dovahkiin.png/revision/latest?cb=20160916154950&path-prefix=protagonist",
+    "_picture": "",
+    "_species": {
+      "_height": "Medium",
+      "_id": "dwarf",
+      "_traits": [
+        {
+          "_id": "darkvision",
+          "_name": "Darkvision",
+          "_description": [
+            "You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray."
+          ]
+        },
+        {
+          "_id": "dwarven-resilience",
+          "_name": "Dwarven Resilience",
+          "_description": [
+            "You have advantage on saving throws against poison, and you have resistance against poison damage."
+          ]
+        },
+        {
+          "_id": "stonecunning",
+          "_name": "Stonecunning",
+          "_description": [
+            "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+          ]
+        },
+        {
+          "_id": "dwarven-combat-training",
+          "_name": "Dwarven Combat Training",
+          "_description": [
+            "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."
+          ]
+        },
+        {
+          "_id": "tool-proficiency",
+          "_name": "Tool Proficiency",
+          "_description": [
+            "You gain proficiency with the artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools."
+          ]
+        }
+      ],
+      "_name": "Dwarf",
+      "_subSpecies": {
+        "_name": ""
+      },
+      "_language": [
+        {
+          "index": "common",
+          "name": "Common",
+          "url": "/api/languages/common"
+        },
+        {
+          "index": "dwarvish",
+          "name": "Dwarvish",
+          "url": "/api/languages/dwarvish"
+        }
+      ],
+      "_skills": [],
+      "_toChooseSkills": [],
+      "_bonusCharacteristic": {},
+      "_toChooseLanguages": []
+    },
+    "_idCharacter": 0,
+    "_alignment": {
+      "moral": "EVIL",
+      "order": "CHAOTIC"
+    }
+  }
+}

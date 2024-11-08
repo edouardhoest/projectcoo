@@ -2,8 +2,8 @@ import { Order } from "../enums/Order";
 import { Moral } from "../enums/Moral";
 
 export class Alignment {
-  private moral: Moral;
-  private order: Order;
+  private readonly moral: Moral;
+  private readonly order: Order;
 
   constructor(moral?: Moral, order?: Order, init?: Partial<Alignment>) {
     this.moral = moral || Moral.NEUTRAL;

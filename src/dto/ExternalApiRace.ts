@@ -1,36 +1,35 @@
-import { ExternalApiSpecy } from "./ExternalApiSpecy";
-import { SpecyService } from "../services/SpecyService";
+import { ExternalApiSpecies } from "./ExternalApiSpecies";
+import { SpeciesService } from "../services/SpeciesService";
 
 export class ExternalApiRace {
-  constructor(count: number, results: ExternalApiSpecy[]) {
+  private readonly _count: number;
+  private readonly _results: ExternalApiSpecies[];
+
+  constructor(count: number, results: ExternalApiSpecies[]) {
     this._count = count;
     this._results = results;
   }
-
-  private _count: number;
 
   get count(): number {
     return this._count;
   }
 
-  private _results: ExternalApiSpecy[];
-
-  get results(): ExternalApiSpecy[] {
+  get results(): ExternalApiSpecies[] {
     return this._results;
   }
 
   static async fromJson(json: any): Promise<ExternalApiRace> {
     const count = json.count;
-    const results: ExternalApiSpecy[] = json.results;
+    const results: ExternalApiSpecies[] = json.results;
     return new ExternalApiRace(count, results);
   }
 
-  static async specyFromJson(json: any): Promise<ExternalApiRace> {
+  static async speciesFromJson(json: any): Promise<ExternalApiRace> {
     const count = json.count;
-    const results: ExternalApiSpecy[] = json.results;
+    const results: ExternalApiSpecies[] = json.results;
     for (const result of results) {
-      const specyDetails = (await SpecyService.fetchSpecyDetails(result.index)).json();
-      result.subSpecy = this.subSpeciesFromResponse(await specyDetails);
+      const speciesDetails = (await SpeciesService.fetchSpeciesDetails(result.index)).json();
+      result.subSpecies = this.subSpeciesFromResponse(await speciesDetails);
     }
     return new ExternalApiRace(count, results);
   }
@@ -49,9 +48,9 @@ export class ExternalApiRace {
     return this.results.map((result) => result.name);
   }
 
-  specyResultsNames(): string[] {
+  speciesResultsNames(): string[] {
     return this.results.map((result) =>
-      result.subSpecy.length > 0 ? `${result.name} - ${result.subSpecy}` : result.name,
+      result.subSpecies.length > 0 ? `${result.name} - ${result.subSpecies}` : result.name,
     );
   }
 }

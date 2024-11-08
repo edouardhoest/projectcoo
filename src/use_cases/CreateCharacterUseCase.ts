@@ -1,48 +1,20 @@
 import { UseCase } from "./UseCase";
-import { Character } from "../entity/Character";
+import { JobService } from "../services/JobService";
+import { SpeciesService } from "../services/SpeciesService";
 import { CharacterService } from "../services/CharacterService";
+import { AlignmentService } from "../services/AlignmentService";
 
 export default class CreateCharacterUseCase implements UseCase<object, string> {
+  private jobService: JobService = new JobService();
+  private speciesService: SpeciesService = new SpeciesService();
+  private characterService: CharacterService = new CharacterService();
+  private alignmentService: AlignmentService = new AlignmentService();
+
   async execute(): Promise<object> {
-    const character = new Character();
-    const characterService: CharacterService = new CharacterService();
-    const species = await characterService.retrieveRacesInformation();
-    const jobs = await characterService.retrieveClassInformation();
-    const alignments = await characterService.retrieveAlignmentsInformation();
+    const jobs = await this.jobService.retrieveClassInformation();
+    const species = await this.speciesService.retrieveRacesInformation();
+    const alignments = await this.alignmentService.retrieveAlignmentsInformation();
 
-    const characterKeys = Object.keys(character).reduce(
-      (acc, key) => {
-        acc[key] = key;
-        return acc;
-      },
-      {} as { [key: string]: any },
-    );
-
-    this.deleteUselessKeys(characterKeys);
-    characterKeys["_name"] = "YOUR NAME";
-    characterKeys["_picture"] = "YOUR PICTURE URL";
-
-    this.modifyCharacterKeysValues(characterKeys, alignments, jobs, species);
-    return characterKeys;
-  }
-
-  modifyCharacterKeysValues(
-    characterKeys: {
-      [x: string]: any;
-    },
-    alignments: string[],
-    jobs: string[],
-    species: string[],
-  ) {
-    characterKeys["_alignment"] = alignments;
-    characterKeys["_job"] = jobs;
-    characterKeys["_specy"] = species;
-  }
-
-  deleteUselessKeys(characterKeys: { [x: string]: any }) {
-    const toDeleteKeys = ["_idUser", "_idCharacter"];
-    toDeleteKeys.forEach((key) => {
-      delete characterKeys[key];
-    });
+    return this.characterService.retrieveCharacterKeys(jobs, species, alignments);
   }
 }

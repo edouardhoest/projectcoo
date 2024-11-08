@@ -1,7 +1,7 @@
-import CreateCharacterUseCase from "../../../use_cases/CreateCharacterUseCase";
-import SaveCharacterUseCase from "../../../use_cases/SaveCharacterUseCase";
-import { Request, Response, Router } from "express";
 import Routes from "routes/Routes";
+import { Request, Response, Router } from "express";
+import SaveCharacterUseCase from "../../../use_cases/SaveCharacterUseCase";
+import CreateCharacterUseCase from "../../../use_cases/CreateCharacterUseCase";
 
 class CharacterRoutesExpress implements Routes {
   constructor() {
