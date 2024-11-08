@@ -2,6 +2,12 @@
 
 Vous aimez DnD ? Vous aimez le TypeScript ? Alors vous allez aimer notre projet
 
+## Prérequis
+- Node v22.x ou plus
+- NPM v10.8.1 ou plus
+
+Cette version de Node est nécessaire au minimum, car nous utilisons le paramètre `env-file-if-exists` disponible qu'à partir des version 22.x
+
 ## Installation
 
 Après le clonage du repo, il suffit d'installer les dépendances.
