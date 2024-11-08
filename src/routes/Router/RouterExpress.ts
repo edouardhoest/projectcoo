@@ -1,13 +1,13 @@
 import Router from "../Router";
-import ExpressServer from "routes/Server/ExpressServer";
+import ServerExpress from "routes/Server/ServerExpress";
 import characterRoutes from "../Routes/Express/character.routes";
 
-class RouterExpress implements Router<ExpressServer> {
-  constructor(server: ExpressServer) {
+class RouterExpress implements Router<ServerExpress> {
+  constructor(server: ServerExpress) {
     this.init(server);
   }
 
-  init(server: ExpressServer): void {
+  init(server: ServerExpress): void {
     server.app.use("/character", characterRoutes);
   }
 }

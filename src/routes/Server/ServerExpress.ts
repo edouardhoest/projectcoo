@@ -3,7 +3,7 @@ import Server from "../Server";
 import express, { Application } from "express";
 import RouterExpress from "../Router/RouterExpress";
 
-class ExpressServer implements Server {
+class ServerExpress implements Server {
   private readonly port: number;
   private readonly _app: Application;
 
@@ -30,4 +30,4 @@ class ExpressServer implements Server {
   }
 }
 
-export default ExpressServer;
+export default ServerExpress;
