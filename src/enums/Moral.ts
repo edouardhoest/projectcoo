@@ -4,12 +4,10 @@ export enum Moral {
   NEUTRAL = "NEUTRAL",
 }
 
-export function moralAlignmentFromString(moralAligment: string) {
-  if (moralAligment.toUpperCase() == "EVIL") {
-    return Moral.EVIL;
-  } else if (moralAligment.toUpperCase() == "GOOD") {
-    return Moral.GOOD;
-  } else if (moralAligment.toUpperCase() == "NEUTRAL") {
-    return Moral.NEUTRAL;
+export function moralAlignmentFromString(moralAlignment: string) {
+  for (const key in Moral) {
+    if (Moral[key as keyof typeof Moral] === moralAlignment.toUpperCase()) {
+      return Moral[key as keyof typeof Moral];
+    }
   }
 }

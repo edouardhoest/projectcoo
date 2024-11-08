@@ -4,12 +4,10 @@ export enum Order {
   CHAOTIC = "CHAOTIC",
 }
 
-export function orderAlignmentFromString(orderAligment: string) {
-  if (orderAligment.toUpperCase() == "LAWFUL") {
-    return Order.LAWFUL;
-  } else if (orderAligment.toUpperCase() == "NEUTRAL") {
-    return Order.NEUTRAL;
-  } else if (orderAligment.toUpperCase() == "CHAOTIC") {
-    return Order.CHAOTIC;
+export function orderAlignmentFromString(orderAlignment: string) {
+  for (const key in Order) {
+    if (Order[key as keyof typeof Order] === orderAlignment.toUpperCase()) {
+      return Order[key as keyof typeof Order];
+    }
   }
 }
