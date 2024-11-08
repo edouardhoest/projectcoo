@@ -4,10 +4,9 @@ export enum Moral {
   NEUTRAL = "NEUTRAL",
 }
 
-export function moralAlignmentFromString(moralAligment: string) {
-  for (const key in Moral)
-  {
-    if (Moral[key as keyof typeof Moral] === moralAligment.toUpperCase()) {
+export function moralAlignmentFromString(moralAlignment: string) {
+  for (const key in Moral) {
+    if (Moral[key as keyof typeof Moral] === moralAlignment.toUpperCase()) {
       return Moral[key as keyof typeof Moral];
     }
   }
